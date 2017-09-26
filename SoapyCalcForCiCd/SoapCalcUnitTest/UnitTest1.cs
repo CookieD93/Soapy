@@ -30,7 +30,7 @@ namespace SoapCalcUnitTest
             Assert.AreEqual(2, service.Divide(10, 5));
         }
         [TestMethod]
-        [ExpectedException(typeof(DivideByZeroException))]
+        //[ExpectedException(typeof(DivideByZeroException))]
         public void DivideZeroTest()
         {
             service.Divide(5, 0);

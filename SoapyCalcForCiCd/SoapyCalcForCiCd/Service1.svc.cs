@@ -12,22 +12,56 @@ namespace SoapyCalcForCiCd
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value)
+        private static int TestTal { get; set; }
+
+        public void SetTal(int tal)
         {
-            return string.Format("You entered: {0}", value);
+            TestTal = tal;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public int GetTal()
         {
-            if (composite == null)
+            return TestTal;
+        }
+
+        public double Add(double a, double b)
+        {
+            return a + b;
+        }
+        
+        public double Subtract(double a, double b)
+        {
+            return a - b;
+        }
+
+        public double Divide(double a, double b)
+        {
+            if (b == 0)
             {
-                throw new ArgumentNullException("composite");
+                throw new DivideByZeroException("dummy");
             }
-            if (composite.BoolValue)
+            return a / b;
+        }
+
+        public void All(double a, double b, out double add, out double subtract, out double divide)
+        {
+            subtract = a - b;
+            divide = a / b;
+            add = a + b;
+        }
+
+        public double Sum(double[] numbers)
+        {
+            return numbers.Sum();
+        }
+
+        public int MayThrowExeption(int number)
+        {
+            if (number == 0)
             {
-                composite.StringValue += "Suffix";
+                throw new Exception();
             }
-            return composite;
+            return number;
         }
     }
 }

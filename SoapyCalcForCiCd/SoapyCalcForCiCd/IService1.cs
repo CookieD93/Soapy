@@ -14,34 +14,28 @@ namespace SoapyCalcForCiCd
     {
 
         [OperationContract]
-        string GetData(int value);
+        void SetTal(int tal);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        int GetTal();
+        [OperationContract]
+        double Add(double a, double b);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        double Subtract(double a, double b);
+
+        [OperationContract]
+        double Divide(double a, double b);
+
+        [OperationContract]
+        void All(double a, double b, out double add, out double substact, out double divide);
+        [OperationContract]
+        double Sum(double[] numbers);
+
+        [OperationContract]
+        int MayThrowExeption(int number);
     }
 
 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
 
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
-    }
 }

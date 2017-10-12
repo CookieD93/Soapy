@@ -150,7 +150,7 @@ namespace SoapyCalcForCiCd
 
         public void Delete500FromDB()
         {
-            const string deleter = "Delete * from PiMeasurements";
+            const string deleter = "truncate table PiMeasurements";
             using (SqlConnection dataConnection = new SqlConnection(ConnectionString))
             {
                 dataConnection.Open();

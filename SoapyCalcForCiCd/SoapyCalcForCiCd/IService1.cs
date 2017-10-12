@@ -17,7 +17,7 @@ namespace SoapyCalcForCiCd
         void SetTal(int tal);
 
         [OperationContract]
-        int GetTal();
+        double GetTal(int id);
         [OperationContract]
         double Add(double a, double b);
 
@@ -34,6 +34,15 @@ namespace SoapyCalcForCiCd
 
         [OperationContract]
         int MayThrowExeption(int number);
+
+        [OperationContract]
+        void UploadReadingsToDb(int[] measurements, DateTime tid, int count);
+
+        [OperationContract]
+        string GetLatestReading();
+
+        [OperationContract]
+        void Delete500FromDB();
     }
 
 
